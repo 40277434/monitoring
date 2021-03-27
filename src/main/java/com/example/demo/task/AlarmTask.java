@@ -50,15 +50,15 @@ public class AlarmTask {
         		String res = jsonObject.getString("answer");
         		if(res != null && !"".equals(res)) {
         			if(Float.parseFloat(res) == temp) {
-                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": true");
+                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+" : Calculation correct!");
                 	}else {
-                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": false");
+                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+" : Calculation NOT correct!");
                 	}
         		}else{
-        			System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": param: answer is null");
+        			System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+" : param: answer is true");
         		}
         	}else {
-        		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": param: error is null");
+        		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+" :  param: error is true");
         	}
         }catch (Exception e) {
         	System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+e.toString());
