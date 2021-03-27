@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  demo:
+    image: 40277434/webcalc-monitoring
+    container_name: monitoring_container
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
