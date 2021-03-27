@@ -7,6 +7,6 @@ RUN mvn package -Dmaven.test.skip=true
 
 
 FROM openjdk:11-jre
-COPY --from=BUILD_IMAGE ./target/demo-0.0.1-SNAPSHOT.jar /usr/local/lib/demo-0.0.1-SNAPSHOT.jar
+COPY --from=BUILD_IMAGE ./target/demo-task-0.0.1-SNAPSHOT.jar /usr/local/lib/demo-task-0.0.1-SNAPSHOT.jar
 EXPOSE 80
 ENTRYPOINT [ "java","-jar", "/usr/local/lib/demo-task-0.0.1-SNAPSHOT.jar" ]

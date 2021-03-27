@@ -22,11 +22,11 @@ import com.alibaba.fastjson.JSONObject;
 //@Async
 public class AlarmTask {
 
-	private String url = "http://localhost";
-	String[] methodArr = {"add", "minus", "product", "divi", "power", "modulu"};
+	private String url = "http://proxy.40277434.qpc.hal.davecutting.uk/";
+	String[] methodArr = {"add", "subtract", "multiply", "division", "power", "modulo"};
 	SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     
-	@Scheduled(cron = "0/30 * * * * *")
+	@Scheduled(cron = "0/5 * * * * *")
     public void run() throws InterruptedException {
     	int x = (int)(Math.random()*100+1);
     	int y = (int)(Math.random()*100+1);
@@ -42,7 +42,7 @@ public class AlarmTask {
 			case 5: temp = (float) (x % y);break;
 		}
         try {
-        	String urlTemp = url+"/api?x="+x+"&y="+y+"&method="+method;
+        	String urlTemp = url+"?x="+x+"&y="+y+"&method="+method;
         	String result = doGet(urlTemp);
         	JSONObject jsonObject = JSON.parseObject(result);
         	Boolean error = jsonObject.getBoolean("error");
@@ -50,15 +50,15 @@ public class AlarmTask {
         		String res = jsonObject.getString("answer");
         		if(res != null && !"".equals(res)) {
         			if(Float.parseFloat(res) == temp) {
-                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+url+": true");
+                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": true");
                 	}else {
-                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+url+": false");
+                		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": false");
                 	}
         		}else{
-        			System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+url+": param: answer is null");
+        			System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": param: answer is null");
         		}
         	}else {
-        		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+url+": param: error is null");
+        		System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+urlTemp+": param: error is null");
         	}
         }catch (Exception e) {
         	System.out.println("Scheduled: " + SimpleDateFormat.format(new Date())+": "+e.toString());
