@@ -43,6 +43,7 @@ public class AlarmTask {
 		}
         try {
         	String urlTemp = url+"?x="+x+"&y="+y+"&method="+method;
+			System.out.println("Testing: " + SimpleDateFormat.format(new Date())+": "+urlTemp);
         	String result = doGet(urlTemp);
         	JSONObject jsonObject = JSON.parseObject(result);
         	Boolean error = jsonObject.getBoolean("error");
