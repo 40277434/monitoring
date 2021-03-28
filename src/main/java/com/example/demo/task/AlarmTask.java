@@ -26,7 +26,7 @@ public class AlarmTask {
 	String[] methodArr = {"add", "subtract", "multiply", "division", "power", "modulo"};
 	SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     
-	@Scheduled(cron = "0/5 * * * * *")
+	@Scheduled(cron = "0/50 * * * * *")
     public void run() throws InterruptedException {
     	int x = (int)(Math.random()*100+1);
     	int y = (int)(Math.random()*100+1);
